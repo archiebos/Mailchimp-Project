@@ -4,6 +4,7 @@ import requests
 from dotenv import load_dotenv
 import os
 import json
+import csv
 
 # 2.         Define variables: URL,
 # 3.        Define API keys in a virtual environment so key information isn’t available on GitHub
@@ -24,10 +25,33 @@ if response.status_code == 200:
     print('good job')
     
     data = response.json()
-    print(data)
+    campaigns = data.get('campaigns',[])
+    
+    #Trying to create a CSV file
+    
+    csv_file = 'campaigns.csv'
+    
+    with open(csv_file, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        
+        
+        writer.writerow(['ID', 'Subject', 'Status', 'Emails Sent', 'Create Time'])
 
-    with open('Campaign.json', 'w') as files:
-        json.dump(data, files, indent=2)
+        # Write campaign rows
+        for campaign in campaigns:
+            writer.writerow([
+                campaign.get('id'),
+                campaign.get('subject_line'),
+                campaign.get('status'),
+                campaign.get('emails_sent'),
+                campaign.get('create_time'),
+            ])
+
+    print(f'Campaign data saved to {csv_file}')
+    
+
+    # with open('Campaign.json', 'w') as files:
+    #     json.dump(data, files, indent=2)
         
     print('Campaign data extracted')
     

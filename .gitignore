@@ -1,3 +1,5 @@
 .env
 .requirements
 .venv
+.json
+.csv
