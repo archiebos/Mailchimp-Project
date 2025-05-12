@@ -24,7 +24,7 @@ while True:
     }
 
     # 6. Make authenticated request
-    response = requests.get(url, auth=('anystring', api_key), params=params)
+    response = requests.get(url, auth=('user', api_key), params=params)
 
     # 7. Check response
     if response.status_code != 200:

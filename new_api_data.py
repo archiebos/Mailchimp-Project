@@ -45,6 +45,11 @@ new_campaigns = [
     if c['id'] not in existing_ids
 ]
 
+# Overwrites the file with the new campaign ids
+
+with open('new_campaigns.json', 'w', encoding='utf-8') as f:
+    json.dump(new_campaigns, f, indent=2)
+
 # Append and save if there are new campaigns
 if new_campaigns:
     existing_campaigns.extend(new_campaigns)
