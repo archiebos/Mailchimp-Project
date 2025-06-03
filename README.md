@@ -36,4 +36,4 @@ Oultine
 
 10.        Add requirements.txt
 
-11.        Move that to AWS
+

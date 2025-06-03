@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-api_key = os.getenv('mailchimp_api_key')
+api_key = os.getenv('MAILCHIMP_API_KEY')
 url = f'https://us2.api.mailchimp.com/3.0/campaigns'
 
 # Load existing data from the static file
@@ -33,7 +33,7 @@ if latest_time:
     params['since_create_time'] = latest_time
 
 # Fetch new campaigns from Mailchimp
-response = requests.get(url, auth=('anystring', api_key), params=params)
+response = requests.get(url, auth=('', api_key), params=params)
 
 if response.status_code != 200:
     print(f"Error {response.status_code}: {response.text}")

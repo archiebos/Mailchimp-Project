@@ -1,5 +1,6 @@
-.env
+*.env*
 .requirements
 .venv
 *.json
 *.csv
+*docker-compose.yml*
