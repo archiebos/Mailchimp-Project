@@ -1,0 +1,6 @@
+requests
+load_dotenv
+os
+json
+datetime
+date_parser
